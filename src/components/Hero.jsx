@@ -18,9 +18,7 @@ function Hero() {
         </div>
       </div>
       <div className="hero-image">
-        <div className="image-placeholder">
-          <span>🏋️</span>
-        </div>
+        <img src="/Rahma.jpg" alt="Jeridi Rahma - Coach Sportif" className="hero-img" />
       </div>
     </section>
   );

@@ -146,20 +146,78 @@
   border-bottom: 1px solid #d4e0f7;
 }
 
-.special-mention li:last-child {
-  border-bottom: none;
-}
+  .special-mention li:last-child {
+    border-bottom: none;
+  }
 
-.special-mention strong {
-  color: #667eea;
+  .special-mention strong {
+    color: #667eea;
+  }
+
+@media (max-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
 }
 
 @media (max-width: 768px) {
+  .services {
+    padding: 2rem 1rem;
+  }
+
   .services h2 {
     font-size: 2rem;
   }
 
+  .services .intro {
+    font-size: 1rem;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    padding: 1.5rem;
+  }
+
+  .service-icon {
+    font-size: 2.5rem;
+  }
+
+  .coaching-process {
+    padding: 2rem 1.5rem;
+  }
+
+  .coaching-process h3 {
+    font-size: 1.5rem;
+  }
+
   .process-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .special-mention {
+    padding: 1.5rem;
+  }
+
+  .special-mention h3 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .services h2 {
+    font-size: 1.5rem;
+  }
+
+  .service-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .features-list li {
+    font-size: 0.9rem;
   }
 }
