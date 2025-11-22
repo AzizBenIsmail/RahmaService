@@ -1,8 +1,11 @@
 .about-hero {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
-  padding: 3rem 1rem;
-  text-align: center;
+  padding: clamp(2rem, 6vw, 3rem) clamp(1rem, 5vw, 2rem);
+}
+
+html.dark-mode .about-hero {
+  background: linear-gradient(135deg, #8b9fea 0%, #9d6db8 100%);
 }
 
 .about-hero-content {
@@ -11,17 +14,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: clamp(1.5rem, 4vw, 2rem);
   flex-wrap: wrap;
 }
 
 .about-hero-img {
-  width: 250px;
-  height: 250px;
-  border-radius: 15px;
+  width: clamp(200px, 40vw, 250px);
+  height: clamp(200px, 40vw, 250px);
+  border-radius: clamp(12px, 3vw, 15px);
   object-fit: cover;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  border: 5px solid white;
+  border: clamp(3px, 1vw, 5px) solid white;
+  flex-shrink: 0;
 }
 
 .about-hero-text {
@@ -30,25 +34,30 @@
 }
 
 .about-hero-text h2 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
+  font-size: clamp(1.75rem, 6vw, 2.5rem);
+  margin-bottom: clamp(0.5rem, 1.5vw, 0.75rem);
   font-weight: 700;
+  line-height: 1.2;
 }
 
 .about-hero-text .subtitle {
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
+  margin-bottom: clamp(0.5rem, 1.5vw, 0.75rem);
   opacity: 0.95;
 }
 
 .about-hero-text .bio {
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 2vw, 1rem);
   opacity: 0.9;
   line-height: 1.6;
 }
 
 .about {
-  padding: 4rem 1rem;
+  padding: clamp(2rem, 8vw, 4rem) clamp(1rem, 5vw, 2rem);
+}
+
+html.dark-mode .about {
+  background: #1a1a1a;
 }
 
 .about .container {
@@ -58,50 +67,82 @@
 
 .about h2 {
   text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
+  font-size: clamp(1.75rem, 6vw, 2.5rem);
+  margin-bottom: clamp(0.5rem, 2vw, 1rem);
   color: #333;
+}
+
+html.dark-mode .about h2 {
+  color: #e0e0e0;
 }
 
 .about .intro {
   text-align: center;
   color: #666;
-  font-size: 1.1rem;
-  margin-bottom: 3rem;
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
+  margin-bottom: clamp(1.5rem, 5vw, 3rem);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+html.dark-mode .about .intro {
+  color: #b0b0b0;
 }
 
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin-bottom: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: clamp(1.5rem, 4vw, 2rem);
+  margin-bottom: clamp(2rem, 6vw, 3rem);
 }
 
 .about-card {
   background: white;
-  padding: 2rem;
-  border-radius: 10px;
+  padding: clamp(1.5rem, 4vw, 2rem);
+  border-radius: clamp(8px, 2vw, 12px);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+html.dark-mode .about-card {
+  background: #2d2d2d;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .about-card h3,
 .qualifications-card h3 {
   color: #667eea;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+  font-size: clamp(1.25rem, 4vw, 1.5rem);
+  margin-bottom: clamp(0.75rem, 2vw, 1rem);
+  font-weight: 600;
+}
+
+html.dark-mode .about-card h3,
+html.dark-mode .qualifications-card h3 {
+  color: #a6b9f5;
 }
 
 .about-card p {
   color: #555;
   line-height: 1.8;
-  margin-bottom: 1rem;
+  margin-bottom: clamp(0.75rem, 2vw, 1rem);
+  font-size: clamp(0.9rem, 2vw, 1rem);
+}
+
+html.dark-mode .about-card p {
+  color: #b0b0b0;
 }
 
 .qualifications-card {
   background: white;
-  padding: 2rem;
-  border-radius: 10px;
+  padding: clamp(1.5rem, 4vw, 2rem);
+  border-radius: clamp(8px, 2vw, 12px);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+html.dark-mode .qualifications-card {
+  background: #2d2d2d;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .qualifications-card ul {
@@ -111,10 +152,15 @@
 }
 
 .qualifications-card li {
-  padding: 0.8rem 0;
+  padding: clamp(0.6rem, 1.5vw, 0.8rem) 0;
   color: #555;
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 2vw, 1rem);
   border-bottom: 1px solid #eee;
+}
+
+html.dark-mode .qualifications-card li {
+  color: #b0b0b0;
+  border-bottom-color: #404040;
 }
 
 .qualifications-card li:last-child {
@@ -123,18 +169,23 @@
 
 .expertise-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+  gap: clamp(1.5rem, 4vw, 2rem);
+  margin-top: clamp(2rem, 6vw, 3rem);
 }
 
 .expertise-item {
   background: white;
-  padding: 2rem;
-  border-radius: 10px;
+  padding: clamp(1.5rem, 4vw, 2rem);
+  border-radius: clamp(8px, 2vw, 12px);
   text-align: center;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease;
+}
+
+html.dark-mode .expertise-item {
+  background: #2d2d2d;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .expertise-item:hover {
@@ -142,42 +193,110 @@
 }
 
 .expertise-item .icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  font-size: clamp(2.5rem, 8vw, 3rem);
+  margin-bottom: clamp(0.75rem, 2vw, 1rem);
 }
 
 .expertise-item h4 {
   color: #333;
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
+  font-size: clamp(1.1rem, 3vw, 1.2rem);
+  margin-bottom: clamp(0.5rem, 1.5vw, 0.75rem);
+  font-weight: 600;
+}
+
+html.dark-mode .expertise-item h4 {
+  color: #e0e0e0;
 }
 
 .expertise-item p {
   color: #666;
   margin: 0;
+  font-size: clamp(0.85rem, 2vw, 0.95rem);
 }
 
-@media (max-width: 768px) {
-.about {
-  padding: 4rem 1rem;
-  background: #f9f9f9;
+html.dark-mode .expertise-item p {
+  color: #b0b0b0;
+}
+
+@media (max-width: 1024px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 768px) {
   .about-hero-content {
     flex-direction: column;
+    gap: clamp(1.5rem, 3vw, 2rem);
   }
 
   .about-hero-text {
     text-align: center;
   }
 
-  .about-hero-text h2 {
-    font-size: 2rem;
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: clamp(1rem, 3vw, 1.5rem);
+  }
+
+  .about-card,
+  .qualifications-card {
+    padding: clamp(1.25rem, 3vw, 1.5rem);
+  }
+
+  .expertise-grid {
+    grid-template-columns: 1fr;
+    gap: clamp(1rem, 3vw, 1.5rem);
+  }
+
+  .expertise-item {
+    padding: clamp(1.25rem, 3vw, 1.5rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .about {
+    padding: clamp(1rem, 3vw, 1.5rem) clamp(1rem, 2vw, 1.25rem);
+  }
+
+  .about-hero {
+    padding: clamp(1.5rem, 4vw, 2rem) clamp(1rem, 2vw, 1.25rem);
   }
 
   .about-hero-img {
-    width: 200px;
-    height: 200px;
+    width: clamp(180px, 35vw, 200px);
+    height: clamp(180px, 35vw, 200px);
+  }
+
+  .about-hero-text h2 {
+    font-size: clamp(1.35rem, 5vw, 1.75rem);
+  }
+
+  .about h2 {
+    font-size: clamp(1.35rem, 5vw, 1.75rem);
+  }
+
+  .qualifications-card li {
+    padding: clamp(0.5rem, 1vw, 0.6rem) 0;
+  }
+}
+
+@media (max-width: 360px) {
+  .about {
+    padding: 1rem 0.75rem;
+  }
+
+  .about-hero {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .about-hero-text h2 {
+    font-size: 1.35rem;
+  }
+
+  .about-hero-img {
+    width: 180px;
+    height: 180px;
+    border-width: 3px;
   }
 }

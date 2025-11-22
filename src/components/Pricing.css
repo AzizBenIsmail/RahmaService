@@ -1,6 +1,10 @@
 .pricing {
-  padding: 4rem 1rem;
+  padding: clamp(2rem, 8vw, 4rem) clamp(1rem, 5vw, 2rem);
   background: #f9f9f9;
+}
+
+html.dark-mode .pricing {
+  background: #1a1a1a;
 }
 
 .pricing .container {
@@ -10,33 +14,53 @@
 
 .pricing h2 {
   text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
+  font-size: clamp(1.75rem, 6vw, 2.5rem);
+  margin-bottom: clamp(0.5rem, 2vw, 1rem);
   color: #333;
+}
+
+html.dark-mode .pricing h2 {
+  color: #e0e0e0;
 }
 
 .pricing .intro {
   text-align: center;
   color: #666;
-  font-size: 1.1rem;
-  margin-bottom: 3rem;
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
+  margin-bottom: clamp(1.5rem, 5vw, 3rem);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+html.dark-mode .pricing .intro {
+  color: #b0b0b0;
 }
 
 .pricing-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
-  margin-bottom: 4rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
+  gap: clamp(1.5rem, 4vw, 2rem);
+  margin-bottom: clamp(2rem, 8vw, 4rem);
 }
 
 .pricing-card {
   background: white;
-  border-radius: 10px;
-  padding: 2rem;
+  border-radius: clamp(8px, 2vw, 12px);
+  padding: clamp(1.5rem, 4vw, 2rem);
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
   position: relative;
   transition: all 0.3s ease;
   border-top: 4px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+html.dark-mode .pricing-card {
+  background: #2d2d2d;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+  border-top-color: #404040;
 }
 
 .pricing-card:hover {
@@ -49,60 +73,93 @@
   transform: scale(1.02);
 }
 
+html.dark-mode .pricing-card.popular {
+  border-top-color: #8b9fea;
+  box-shadow: 0 5px 30px rgba(139, 159, 234, 0.3);
+}
+
 .popular-badge {
   position: absolute;
-  top: -15px;
+  top: clamp(-12px, -3vw, -15px);
   left: 50%;
   transform: translateX(-50%);
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
-  padding: 0.5rem 1.5rem;
+  padding: clamp(0.4rem, 1vw, 0.5rem) clamp(1rem, 3vw, 1.5rem);
   border-radius: 50px;
-  font-size: 0.9rem;
+  font-size: clamp(0.8rem, 1.5vw, 0.9rem);
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .pricing-card h3 {
   color: #333;
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-  margin-top: 0.5rem;
+  font-size: clamp(1.25rem, 4vw, 1.5rem);
+  margin-bottom: clamp(0.5rem, 1.5vw, 0.75rem);
+  margin-top: clamp(0.5rem, 1.5vw, 0.75rem);
+  flex-grow: 1;
+}
+
+html.dark-mode .pricing-card h3 {
+  color: #e0e0e0;
 }
 
 .pricing-card .description {
   color: #666;
-  font-size: 0.9rem;
-  margin-bottom: 1.5rem;
+  font-size: clamp(0.85rem, 2vw, 0.9rem);
+  margin-bottom: clamp(1rem, 3vw, 1.5rem);
+}
+
+html.dark-mode .pricing-card .description {
+  color: #b0b0b0;
 }
 
 .price {
   display: flex;
   align-items: baseline;
   justify-content: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: clamp(1rem, 3vw, 1.5rem);
+  flex-wrap: wrap;
 }
 
 .price .amount {
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 7vw, 2.5rem);
   font-weight: bold;
   color: #667eea;
 }
 
+html.dark-mode .price .amount {
+  color: #8b9fea;
+}
+
 .price .currency {
-  font-size: 1rem;
-  margin-left: 0.3rem;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  margin-left: clamp(0.25rem, 1vw, 0.3rem);
   color: #667eea;
+}
+
+html.dark-mode .price .currency {
+  color: #8b9fea;
 }
 
 .pricing-card .btn {
   width: 100%;
-  padding: 0.8rem;
-  margin-bottom: 1.5rem;
+  padding: clamp(0.7rem, 2vw, 0.8rem);
+  margin-bottom: clamp(1rem, 3vw, 1.5rem);
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  min-height: 44px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
 }
 
 .pricing-card .btn-primary {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
+}
+
+.pricing-card .btn-primary:hover {
+  opacity: 0.95;
+  transform: translateY(-2px);
 }
 
 .pricing-card .btn-secondary {
@@ -111,77 +168,126 @@
   border: 2px solid #667eea;
 }
 
+html.dark-mode .pricing-card .btn-secondary {
+  background: #2d2d2d;
+  color: #8b9fea;
+  border-color: #8b9fea;
+}
+
+.pricing-card .btn-secondary:hover {
+  opacity: 0.95;
+}
+
 .divider {
   height: 1px;
   background: #eee;
-  margin-bottom: 1.5rem;
+  margin-bottom: clamp(1rem, 3vw, 1.5rem);
+}
+
+html.dark-mode .divider {
+  background: #404040;
 }
 
 .pricing-card h4 {
   color: #333;
-  font-size: 1rem;
-  margin-bottom: 1rem;
+  font-size: clamp(0.95rem, 2vw, 1rem);
+  margin-bottom: clamp(0.75rem, 2vw, 1rem);
+  font-weight: 600;
+}
+
+html.dark-mode .pricing-card h4 {
+  color: #e0e0e0;
 }
 
 .features {
   list-style: none;
   padding: 0;
   margin: 0;
+  flex-grow: 1;
 }
 
 .features li {
-  padding: 0.7rem 0;
+  padding: clamp(0.6rem, 1.5vw, 0.7rem) 0;
   color: #555;
   display: flex;
   align-items: flex-start;
-  gap: 0.7rem;
-  font-size: 0.95rem;
+  gap: clamp(0.5rem, 1.5vw, 0.7rem);
+  font-size: clamp(0.85rem, 2vw, 0.95rem);
+}
+
+html.dark-mode .features li {
+  color: #b0b0b0;
 }
 
 .checkmark {
   color: #667eea;
   font-weight: bold;
   flex-shrink: 0;
+  line-height: 1.5;
+}
+
+html.dark-mode .checkmark {
+  color: #8b9fea;
 }
 
 .pricing-info {
-  margin-top: 4rem;
+  margin-top: clamp(2rem, 8vw, 4rem);
   text-align: center;
 }
 
 .pricing-info h3 {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 6vw, 2rem);
   color: #333;
-  margin-bottom: 2rem;
+  margin-bottom: clamp(1.5rem, 4vw, 2rem);
+}
+
+html.dark-mode .pricing-info h3 {
+  color: #e0e0e0;
 }
 
 .info-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+  gap: clamp(1.5rem, 4vw, 2rem);
 }
 
 .info-item {
   background: white;
-  padding: 2rem;
-  border-radius: 10px;
+  padding: clamp(1.5rem, 4vw, 2rem);
+  border-radius: clamp(8px, 2vw, 12px);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
+html.dark-mode .info-item {
+  background: #2d2d2d;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
 .info-icon {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  font-size: clamp(2rem, 6vw, 2.5rem);
+  margin-bottom: clamp(0.75rem, 2vw, 1rem);
 }
 
 .info-item h4 {
   color: #333;
-  margin-bottom: 0.5rem;
+  margin-bottom: clamp(0.5rem, 1.5vw, 0.75rem);
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-weight: 600;
 }
 
-  .info-item p {
-    color: #666;
-    font-size: 0.95rem;
-  }
+html.dark-mode .info-item h4 {
+  color: #e0e0e0;
+}
+
+.info-item p {
+  color: #666;
+  font-size: clamp(0.85rem, 2vw, 0.95rem);
+  line-height: 1.6;
+}
+
+html.dark-mode .info-item p {
+  color: #b0b0b0;
+}
 
 @media (max-width: 1024px) {
   .pricing-grid {
@@ -195,62 +301,66 @@
 
 @media (max-width: 768px) {
   .pricing {
-    padding: 2rem 1rem;
-  }
-
-  .pricing h2 {
-    font-size: 2rem;
-  }
-
-  .pricing .intro {
-    font-size: 1rem;
+    padding: clamp(1.5rem, 5vw, 2rem) clamp(1rem, 3vw, 1.5rem);
   }
 
   .pricing-grid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: clamp(1rem, 3vw, 1.5rem);
   }
 
   .pricing-card {
-    padding: 1.5rem;
-  }
-
-  .price .amount {
-    font-size: 2rem;
-  }
-
-  .pricing-info h3 {
-    font-size: 1.5rem;
+    padding: clamp(1.25rem, 3vw, 1.5rem);
   }
 
   .info-grid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .info-item {
-    padding: 1.5rem;
-  }
-
-  .info-icon {
-    font-size: 2rem;
+    gap: clamp(1rem, 3vw, 1.5rem);
   }
 }
 
 @media (max-width: 480px) {
+  .pricing {
+    padding: clamp(1rem, 3vw, 1.5rem) clamp(1rem, 2vw, 1.25rem);
+  }
+
   .pricing h2 {
-    font-size: 1.5rem;
+    font-size: clamp(1.35rem, 5vw, 1.75rem);
   }
 
   .pricing-card h3 {
-    font-size: 1.2rem;
+    font-size: clamp(1.1rem, 3.5vw, 1.25rem);
   }
 
   .price .amount {
-    font-size: 1.8rem;
+    font-size: clamp(1.5rem, 5vw, 1.8rem);
   }
 
   .features li {
-    font-size: 0.9rem;
+    font-size: clamp(0.8rem, 1.8vw, 0.9rem);
+  }
+}
+
+@media (max-width: 360px) {
+  .pricing {
+    padding: 1rem 0.75rem;
+  }
+
+  .pricing h2 {
+    font-size: 1.35rem;
+  }
+
+  .pricing-card h3 {
+    font-size: 1rem;
+  }
+
+  .price .amount {
+    font-size: 1.5rem;
+  }
+
+  .popular-badge {
+    top: -12px;
+    padding: 0.35rem 0.8rem;
+    font-size: 0.75rem;
   }
 }

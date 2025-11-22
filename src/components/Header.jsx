@@ -54,14 +54,17 @@ function Header() {
               <span className="time-value">{time}</span>
             </div>
           </div>
-          <button 
-            className="theme-toggle" 
-            onClick={toggleTheme}
-            aria-label="Toggle theme"
-            title={isDark ? t('header.lightMode') : t('header.darkMode')}
-          >
-            {isDark ? '☀️' : '🌙'}
-          </button>
+          <div className="header-top-actions">
+            <LanguageSwitcher />
+            <button 
+              className="theme-toggle" 
+              onClick={toggleTheme}
+              aria-label="Toggle theme"
+              title={isDark ? t('header.lightMode') : t('header.darkMode')}
+            >
+              {isDark ? '☀️' : '🌙'}
+            </button>
+          </div>
         </div>
       </div>
       <div className="container">
@@ -76,7 +79,6 @@ function Header() {
           <a href="#contact" onClick={handleNavClick}>{t('header.contact')}</a>
         </nav>
         <div className="header-actions">
-          <LanguageSwitcher />
           <button 
             className="menu-toggle" 
             onClick={() => setMenuOpen(!menuOpen)}
