@@ -3,23 +3,55 @@ import './Header.css';
 
 function Header() {
   const [menuOpen, setMenuOpen] = React.useState(false);
+  const [dateTime, setDateTime] = React.useState(new Date());
+
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setDateTime(new Date());
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const handleNavClick = () => {
+    setMenuOpen(false);
+  };
+
+  const formatDateTime = () => {
+    const days = ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'];
+    const months = ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'];
+    
+    const day = days[dateTime.getDay()];
+    const date = dateTime.getDate();
+    const month = months[dateTime.getMonth()];
+    const hours = String(dateTime.getHours()).padStart(2, '0');
+    const minutes = String(dateTime.getMinutes()).padStart(2, '0');
+    const seconds = String(dateTime.getSeconds()).padStart(2, '0');
+    
+    return `${day} ${date} ${month} - ${hours}:${minutes}:${seconds}`;
+  };
 
   return (
     <header className="header">
+      <div className="header-top">
+        <div className="datetime">
+          🕐 {formatDateTime()}
+        </div>
+      </div>
       <div className="container">
         <div className="logo">
           <h1>💪 Rahma Service</h1>
         </div>
         <nav className={`nav ${menuOpen ? 'active' : ''}`}>
-          <a href="#home">Accueil</a>
-          <a href="#about">À Propos</a>
-          <a href="#services">Services</a>
-          <a href="#pricing">Tarifs</a>
-          <a href="#contact">Contact</a>
+          <a href="#home" onClick={handleNavClick}>Accueil</a>
+          <a href="#about" onClick={handleNavClick}>À Propos</a>
+          <a href="#services" onClick={handleNavClick}>Services</a>
+          <a href="#pricing" onClick={handleNavClick}>Tarifs</a>
+          <a href="#contact" onClick={handleNavClick}>Contact</a>
         </nav>
         <button 
           className="menu-toggle" 
           onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
         >
           ☰
         </button>
