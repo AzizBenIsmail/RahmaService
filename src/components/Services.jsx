@@ -1,40 +1,43 @@
 import React from 'react';
 import './Services.css';
+import { useLanguage } from '../hooks/useLanguage';
 
 function Services() {
+  const { t } = useLanguage();
+
   const services = [
     {
       icon: '👥',
-      title: 'Cours Collectifs',
-      description: 'Sessions dynamiques et motivantes pour tous les niveaux',
-      features: ['Groupe limité', 'Ambiance conviviale', 'Tous niveaux', 'Divers disciplines']
+      title: t('services.group_title'),
+      description: t('services.group_desc'),
+      features: [t('services.group_f1'), t('services.group_f2'), t('services.group_f3'), t('services.group_f4')]
     },
     {
       icon: '🏋️',
-      title: 'Coaching Plateau',
-      description: 'Programme progressif pour reprendre ou améliorer votre entraînement',
-      features: ['Reprise progressive', 'Suivi individualisé', 'Adaptation continue', 'Prévention des blessures']
+      title: t('services.plateau_title'),
+      description: t('services.plateau_desc'),
+      features: [t('services.plateau_f1'), t('services.plateau_f2'), t('services.plateau_f3'), t('services.plateau_f4')]
     },
     {
       icon: '💼',
-      title: 'Coaching Privé',
-      description: 'Accompagnement professionnel totalement personnalisé',
-      features: ['Programme sur mesure', 'Suivi nutritionnel', 'Flexibilité horaire', 'Disponibilité totale']
+      title: t('services.private_title'),
+      description: t('services.private_desc'),
+      features: [t('services.private_f1'), t('services.private_f2'), t('services.private_f3'), t('services.private_f4')]
     }
   ];
 
   const privateCoachingProcess = [
-    { step: 1, title: 'Bilan Initial', desc: 'État actuel, objectifs, niveau, disponibilité' },
-    { step: 2, title: 'Analyse Complète', desc: 'Évaluation des besoins spécifiques et habitudes' },
-    { step: 3, title: 'Programme Personnalisé', desc: 'Entraînement adapté + programme nutritionnel' },
-    { step: 4, title: 'Suivi Continu', desc: 'Accompagnement régulier et disponibilité totale' }
+    { step: 1, title: t('services.step1_title'), desc: t('services.step1_desc') },
+    { step: 2, title: t('services.step2_title'), desc: t('services.step2_desc') },
+    { step: 3, title: t('services.step3_title'), desc: t('services.step3_desc') },
+    { step: 4, title: t('services.step4_title'), desc: t('services.step4_desc') }
   ];
 
   return (
     <section id="services" className="services">
       <div className="container">
-        <h2>Mes Services</h2>
-        <p className="intro">Trois approches pour atteindre vos objectifs</p>
+        <h2>{t('services.heading')}</h2>
+        <p className="intro">{t('services.intro')}</p>
 
         <div className="services-grid">
           {services.map((service, i) => (
@@ -52,7 +55,7 @@ function Services() {
         </div>
 
         <div className="coaching-process">
-          <h3>Mon Approche du Coaching Privé</h3>
+          <h3>{t('services.approach_title')}</h3>
           <div className="process-grid">
             {privateCoachingProcess.map((item, i) => (
               <div key={i} className="process-step">
@@ -65,13 +68,13 @@ function Services() {
         </div>
 
         <div className="special-mention">
-          <h3>💡 Points Clés</h3>
+          <h3>{t('services.keypoints_title')}</h3>
           <ul>
-            <li><strong>Fiche Technique Complète :</strong> État actuel, objectifs, niveau, disponibilité, habitudes et besoins spécifiques</li>
-            <li><strong>Programme d'Entraînement Sur Mesure :</strong> Adapté à vos objectifs : perte de poids, prise de masse, tonification ou transformation physique</li>
-            <li><strong>Programme Nutritionnel :</strong> Créé spécifiquement selon votre profil et vos objectifs</li>
-            <li><strong>Accompagnement Flexible :</strong> En ligne ou en présentiel (si vous êtes dans les alentours)</li>
-            <li><strong>Disponibilité Totale :</strong> Suivi continu et réponse à toutes vos questions à tout moment</li>
+            <li><strong>{t('services.keypoint1_title')} :</strong> {t('services.keypoint1_desc')}</li>
+            <li><strong>{t('services.keypoint2_title')} :</strong> {t('services.keypoint2_desc')}</li>
+            <li><strong>{t('services.keypoint3_title')} :</strong> {t('services.keypoint3_desc')}</li>
+            <li><strong>{t('services.keypoint4_title')} :</strong> {t('services.keypoint4_desc')}</li>
+            <li><strong>{t('services.keypoint5_title')} :</strong> {t('services.keypoint5_desc')}</li>
           </ul>
         </div>
       </div>

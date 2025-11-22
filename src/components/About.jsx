@@ -1,21 +1,24 @@
 import React from 'react';
 import './About.css';
+import { useLanguage } from '../hooks/useLanguage';
 
 function About() {
+  const { t } = useLanguage();
+
   const qualifications = [
-    '✓ Infirmière Diplômée d\'État',
-    '✓ Coach Sportif Certifiée',
-    '✓ Spécialiste Fitness & Musculation',
-    '✓ Certification HIIT',
-    '✓ Expertise en Nutrition Sportive',
-    '✓ Techniques Comportementales'
+    t('about.qual1'),
+    t('about.qual2'),
+    t('about.qual3'),
+    t('about.qual4'),
+    t('about.qual5'),
+    t('about.qual6')
   ];
 
   const expertise = [
-    { icon: '👥', title: 'Cours Collectifs', desc: 'Séances dynamiques et motivantes' },
-    { icon: '🏋️', title: 'Coaching Plateau', desc: 'Reprise d\'entraînement progressive' },
-    { icon: '💼', title: 'Coaching Privé', desc: 'Programme personnalisé complet' },
-    { icon: '⏱️', title: '12+ Ans', desc: 'D\'expérience sportive et professionnelle' }
+    { icon: '👥', title: t('about.exp1_title'), desc: t('about.exp1_desc') },
+    { icon: '🏋️', title: t('about.exp2_title'), desc: t('about.exp2_desc') },
+    { icon: '💼', title: t('about.exp3_title'), desc: t('about.exp3_desc') },
+    { icon: '⏱️', title: t('about.exp4_title'), desc: t('about.exp4_desc') }
   ];
 
   return (
@@ -24,35 +27,27 @@ function About() {
         <div className="about-hero-content">
           <img src="/Rahma.jpg" alt="Jeridi Rahma" className="about-hero-img" />
           <div className="about-hero-text">
-            <h2>Jeridi Rahma</h2>
-            <p className="subtitle">Infirmière Diplômée • Coach Sportif Certifiée</p>
-            <p className="bio">12+ Ans de Pratique Sportive • Certifications en Fitness, Musculation, HIIT & Nutrition Sportive</p>
+            <h2>{t('about.name')}</h2>
+            <p className="subtitle">{t('about.title')}</p>
+            <p className="bio">{t('about.bio')}</p>
           </div>
         </div>
       </section>
 
       <section id="about" className="about">
         <div className="container">
-          <h2>À Propos</h2>
-          <p className="intro">Découvrez mon parcours et mes certifications</p>
+          <h2>{t('about.heading')}</h2>
+          <p className="intro">{t('about.intro')}</p>
 
           <div className="about-grid">
             <div className="about-card">
-              <h3>Qui Suis-je ?</h3>
-              <p>
-                Je m'appelle Jeridi Rahma. Forte de plus de 12 ans de pratique sportive et de nombreuses certifications, 
-                je suis passionnée par l'accompagnement sportif personnalisé. Mon approche combine professionnalisme, 
-                écoute et efficacité pour vous aider à atteindre vos objectifs.
-              </p>
-              <p>
-                Mon parcours d'infirmière me permet de comprendre les enjeux de santé et de bien-être, tandis que 
-                mes certifications en fitness, musculation, HIIT et nutrition sportive garantissent un suivi complet 
-                et cohérent selon votre objectif.
-              </p>
+              <h3>{t('about.whoami_title')}</h3>
+              <p>{t('about.whoami_text1')}</p>
+              <p>{t('about.whoami_text2')}</p>
             </div>
 
             <div className="qualifications-card">
-              <h3>Certifications</h3>
+              <h3>{t('about.certifications_title')}</h3>
               <ul>
                 {qualifications.map((q, i) => (
                   <li key={i}>{q}</li>

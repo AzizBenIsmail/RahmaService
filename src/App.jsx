@@ -7,19 +7,22 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 import PWAInstall from './components/PWAInstall'
 import { ThemeProvider } from './components/ThemeContext'
+import { LanguageProvider } from './components/LanguageContext'
 import './App.css'
 
 function App() {
   return (
     <ThemeProvider>
-      <PWAInstall />
-      <Header />
-      <Hero />
-      <About />
-      <Services />
-      <Pricing />
-      <Contact />
-      <Footer />
+      <LanguageProvider>
+        <PWAInstall />
+        <Header />
+        <Hero />
+        <About />
+        <Services />
+        <Pricing />
+        <Contact />
+        <Footer />
+      </LanguageProvider>
     </ThemeProvider>
   )
 }

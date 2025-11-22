@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import './Contact.css';
+import { useLanguage } from '../hooks/useLanguage';
 
 function Contact() {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -20,7 +22,6 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Create WhatsApp message
     const whatsappMessage = `Bonjour Rahma, Je m'appelle ${formData.name}. ${formData.message}. Mon email: ${formData.email}${formData.phone ? ', Tél: ' + formData.phone : ''}`;
     const whatsappUrl = `https://wa.me/21650000000?text=${encodeURIComponent(whatsappMessage)}`;
     window.open(whatsappUrl, '_blank');
@@ -29,22 +30,19 @@ function Contact() {
   return (
     <section id="contact" className="contact">
       <div className="container">
-        <h2>Contactez-Moi</h2>
-        <p className="intro">Je suis là pour répondre à toutes vos questions</p>
+        <h2>{t('contact.heading')}</h2>
+        <p className="intro">{t('contact.intro')}</p>
 
         <div className="contact-grid">
           <div className="contact-info">
-            <h3>Prenons Contact</h3>
-            <p>
-              Prêt à commencer votre transformation ? N'hésitez pas à me contacter pour discuter 
-              de vos objectifs et trouver le programme qui vous convient le mieux.
-            </p>
+            <h3>{t('contact.getintouch')}</h3>
+            <p>{t('contact.description')}</p>
 
             <div className="contact-methods">
               <div className="method">
                 <div className="method-icon">💬</div>
-                <h4>WhatsApp</h4>
-                <p>Disponible pour discuter de vos objectifs</p>
+                <h4>{t('contact.whatsapp')}</h4>
+                <p>{t('contact.whatsapp_desc')}</p>
                 <a href="https://wa.me/21650000000" target="_blank" rel="noopener noreferrer" className="contact-link">
                   +216 50 000 000
                 </a>
@@ -52,8 +50,8 @@ function Contact() {
 
               <div className="method">
                 <div className="method-icon">📧</div>
-                <h4>Email</h4>
-                <p>Envoyez-moi vos questions</p>
+                <h4>{t('contact.email')}</h4>
+                <p>{t('contact.email_desc')}</p>
                 <a href="mailto:contact@rahmaservice.tn" className="contact-link">
                   contact@rahmaservice.tn
                 </a>
@@ -61,8 +59,8 @@ function Contact() {
 
               <div className="method">
                 <div className="method-icon">📱</div>
-                <h4>Appel Direct</h4>
-                <p>Parlons directement de votre projet</p>
+                <h4>{t('contact.phone')}</h4>
+                <p>{t('contact.phone_desc')}</p>
                 <a href="tel:+21650000000" className="contact-link">
                   +216 50 000 000
                 </a>
@@ -70,16 +68,16 @@ function Contact() {
             </div>
 
             <div className="availability">
-              <h4>⏰ Disponibilité</h4>
-              <p>Lun - Dim : 8h00 - 20h00</p>
-              <p>Réponse sous 24h maximum</p>
+              <h4>⏰ {t('contact.availability')}</h4>
+              <p>{t('contact.hours')}</p>
+              <p>{t('contact.response')}</p>
             </div>
           </div>
 
           <div className="contact-form-wrapper">
             <form className="contact-form" onSubmit={handleSubmit}>
               <div className="form-group">
-                <label htmlFor="name">Votre Nom *</label>
+                <label htmlFor="name">{t('contact.form_name')} *</label>
                 <input
                   type="text"
                   id="name"
@@ -87,12 +85,12 @@ function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  placeholder="Votre nom"
+                  placeholder={t('contact.form_name_ph')}
                 />
               </div>
 
               <div className="form-group">
-                <label htmlFor="email">Email *</label>
+                <label htmlFor="email">{t('contact.form_email')} *</label>
                 <input
                   type="email"
                   id="email"
@@ -105,7 +103,7 @@ function Contact() {
               </div>
 
               <div className="form-group">
-                <label htmlFor="phone">Téléphone</label>
+                <label htmlFor="phone">{t('contact.form_phone')}</label>
                 <input
                   type="tel"
                   id="phone"
@@ -117,7 +115,7 @@ function Contact() {
               </div>
 
               <div className="form-group">
-                <label htmlFor="subject">Sujet *</label>
+                <label htmlFor="subject">{t('contact.form_subject')} *</label>
                 <select
                   id="subject"
                   name="subject"
@@ -125,29 +123,29 @@ function Contact() {
                   onChange={handleChange}
                   required
                 >
-                  <option value="">-- Choisir un sujet --</option>
-                  <option value="Coaching Privé">Coaching Privé</option>
-                  <option value="Cours Collectifs">Cours Collectifs</option>
-                  <option value="Coaching Plateau">Coaching Plateau</option>
-                  <option value="Question Générale">Question Générale</option>
+                  <option value="">{t('contact.form_subject_choice')}</option>
+                  <option value={t('contact.subject_1')}>{t('contact.subject_1')}</option>
+                  <option value={t('contact.subject_2')}>{t('contact.subject_2')}</option>
+                  <option value={t('contact.subject_3')}>{t('contact.subject_3')}</option>
+                  <option value={t('contact.subject_4')}>{t('contact.subject_4')}</option>
                 </select>
               </div>
 
               <div className="form-group">
-                <label htmlFor="message">Message *</label>
+                <label htmlFor="message">{t('contact.form_message')} *</label>
                 <textarea
                   id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  placeholder="Parlez-moi de vos objectifs..."
+                  placeholder={t('contact.form_message_ph')}
                   rows="5"
                 ></textarea>
               </div>
 
               <button type="submit" className="btn btn-primary">
-                Envoyer via WhatsApp
+                {t('contact.form_submit')}
               </button>
             </form>
           </div>

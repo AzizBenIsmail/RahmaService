@@ -1,35 +1,38 @@
 import React from 'react';
 import './Pricing.css';
+import { useLanguage } from '../hooks/useLanguage';
 
 function Pricing() {
+  const { t } = useLanguage();
+
   const packages = [
     {
-      name: 'Programme Entraînement + Suivi',
+      name: t('pricing.pkg1_name'),
       price: '150',
       currency: 'DT',
-      description: 'Programme d\'entraînement personnalisé avec suivi continu',
+      description: t('pricing.pkg1_desc'),
       features: [
-        'Programme d\'entraînement sur mesure',
-        'Adaptation progressive',
-        'Suivi continu illimité',
-        'Réponses à vos questions 24/7',
-        'Online ou présentiel'
+        t('pricing.pkg1_f1'),
+        t('pricing.pkg1_f2'),
+        t('pricing.pkg1_f3'),
+        t('pricing.pkg1_f4'),
+        t('pricing.pkg1_f5')
       ],
       popular: false
     },
     {
-      name: 'Accompagnement Complet',
+      name: t('pricing.pkg2_name'),
       price: '200',
       currency: 'DT',
-      description: 'Programme d\'entraînement + nutrition + suivi complet',
+      description: t('pricing.pkg2_desc'),
       features: [
-        'Programme d\'entraînement sur mesure',
-        'Programme nutritionnel personnalisé',
-        'Suivi continu illimité',
-        'Réponses à vos questions 24/7',
-        'Bilan technique complet',
-        'Online ou présentiel',
-        'Accompagnement étape par étape'
+        t('pricing.pkg2_f1'),
+        t('pricing.pkg2_f2'),
+        t('pricing.pkg2_f3'),
+        t('pricing.pkg2_f4'),
+        t('pricing.pkg2_f5'),
+        t('pricing.pkg2_f6'),
+        t('pricing.pkg2_f7')
       ],
       popular: true
     }
@@ -38,13 +41,13 @@ function Pricing() {
   return (
     <section id="pricing" className="pricing">
       <div className="container">
-        <h2>Tarifs & Packages</h2>
-        <p className="intro">Choisissez le package qui vous convient le mieux</p>
+        <h2>{t('pricing.heading')}</h2>
+        <p className="intro">{t('pricing.intro')}</p>
 
         <div className="pricing-grid">
           {packages.map((pkg, i) => (
             <div key={i} className={`pricing-card ${pkg.popular ? 'popular' : ''}`}>
-              {pkg.popular && <div className="popular-badge">★ Populaire</div>}
+              {pkg.popular && <div className="popular-badge">★ {t('pricing.popular')}</div>}
               
               <h3>{pkg.name}</h3>
               <p className="description">{pkg.description}</p>
@@ -55,12 +58,12 @@ function Pricing() {
               </div>
 
               <button className={`btn ${pkg.popular ? 'btn-primary' : 'btn-secondary'}`}>
-                Commencer
+                {t('pricing.cta')}
               </button>
 
               <div className="divider"></div>
 
-              <h4>Inclus :</h4>
+              <h4>{t('pricing.included')}</h4>
               <ul className="features">
                 {pkg.features.map((feature, j) => (
                   <li key={j}>
@@ -74,27 +77,27 @@ function Pricing() {
         </div>
 
         <div className="pricing-info">
-          <h3>Comment Ça Marche ?</h3>
+          <h3>{t('pricing.howitworks_title')}</h3>
           <div className="info-grid">
             <div className="info-item">
               <div className="info-icon">📋</div>
-              <h4>1. Consultation Initiale</h4>
-              <p>Nous discutons de vos objectifs, vos disponibilités et vos besoins spécifiques</p>
+              <h4>{t('pricing.step1_title')}</h4>
+              <p>{t('pricing.step1_desc')}</p>
             </div>
             <div className="info-item">
               <div className="info-icon">📊</div>
-              <h4>2. Création du Programme</h4>
-              <p>Programme d'entraînement et nutritionnel totalement personnalisés</p>
+              <h4>{t('pricing.step2_title')}</h4>
+              <p>{t('pricing.step2_desc')}</p>
             </div>
             <div className="info-item">
               <div className="info-icon">📱</div>
-              <h4>3. Suivi Régulier</h4>
-              <p>Accompagnement continu, ajustements et disponibilité 24/7</p>
+              <h4>{t('pricing.step3_title')}</h4>
+              <p>{t('pricing.step3_desc')}</p>
             </div>
             <div className="info-item">
               <div className="info-icon">🎯</div>
-              <h4>4. Atteindre Vos Objectifs</h4>
-              <p>Résultats concrets et transformation physique selon vos buts</p>
+              <h4>{t('pricing.step4_title')}</h4>
+              <p>{t('pricing.step4_desc')}</p>
             </div>
           </div>
         </div>

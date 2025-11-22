@@ -1,11 +1,14 @@
 import React from 'react';
 import './Header.css';
 import { useTheme } from './ThemeContext';
+import LanguageSwitcher from './LanguageSwitcher';
+import { useLanguage } from '../hooks/useLanguage';
 
 function Header() {
   const [menuOpen, setMenuOpen] = React.useState(false);
   const [dateTime, setDateTime] = React.useState(new Date());
   const { isDark, toggleTheme } = useTheme();
+  const { t } = useLanguage();
 
   React.useEffect(() => {
     const timer = setInterval(() => {
@@ -55,7 +58,7 @@ function Header() {
             className="theme-toggle" 
             onClick={toggleTheme}
             aria-label="Toggle theme"
-            title={isDark ? 'Mode clair' : 'Mode sombre'}
+            title={isDark ? t('header.lightMode') : t('header.darkMode')}
           >
             {isDark ? '☀️' : '🌙'}
           </button>
@@ -66,19 +69,15 @@ function Header() {
           <h1>💪 Rahma Service</h1>
         </div>
         <nav className={`nav ${menuOpen ? 'active' : ''}`}>
-          <a href="#home" onClick={handleNavClick}>Accueil</a>
-          <a href="#about" onClick={handleNavClick}>À Propos</a>
-          <a href="#services" onClick={handleNavClick}>Services</a>
-          <a href="#pricing" onClick={handleNavClick}>Tarifs</a>
-          <a href="#contact" onClick={handleNavClick}>Contact</a>
+          <a href="#home" onClick={handleNavClick}>{t('header.home')}</a>
+          <a href="#about" onClick={handleNavClick}>{t('header.about')}</a>
+          <a href="#services" onClick={handleNavClick}>{t('header.services')}</a>
+          <a href="#pricing" onClick={handleNavClick}>{t('header.pricing')}</a>
+          <a href="#contact" onClick={handleNavClick}>{t('header.contact')}</a>
         </nav>
-        <button 
-          className="menu-toggle" 
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-        >
-          ☰
-        </button>
+        <div className="header-actions">
+          <LanguageSwitcher />
+        </div>
       </div>
     </header>
   );
